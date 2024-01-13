@@ -33,3 +33,8 @@ Get the Pods
 ```console
 kubectl get pods
 ```
+
+Scale the pods
+```console
+kubectl scale deployment whoami-deployment.yaml --replicas=2
+```
