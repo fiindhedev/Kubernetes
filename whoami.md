@@ -6,7 +6,7 @@ kind: Deployment
 metadata:
   name: whoami-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: whoami
@@ -23,7 +23,7 @@ spec:
 ```
 Apply the file
 ```console
-kubectl apply whoami-deployment.yaml
+kubectl apply -f whoami-deployment.yaml
 ```
 Get the deployment
 ```console
