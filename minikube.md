@@ -7,24 +7,12 @@
 20 GB free hard disk space or more
 Docker
 ```
-### Install dependencies
-```
-sudo apt update -y
-```
-```
-sudo apt install -y curl wget apt-transport-https ca-certificates gnupg lsb-release conntrack
-```
 
 ### Install docker from official repository
 ```
 curl -sSL get.docker.com | sh
 ```
-```
-sudo apt-get update
-```
-```
-sudo apt install docker-ce docker-ce-cli containerd.io -y
-```
+check if it is installed
 ```
 docker --version
 ```
@@ -46,15 +34,20 @@ chmod a+x /bin/kubectl
 
 ```
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+```
+```
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+```
 sudo chmod +x /usr/local/bin/minikube
 ```
 
 ### Minikube commands
 You start your cluster here, for any issues go to [Troubleshooting](#troubleshooting)
 ```
-minikube start --vm-driver=none
+minikube start --driver=docker --force
 ```
+Other commands if needed, no need to use them you can start using `kubectl`
 ```
 minikube addons list
 minikube addons enable ingress
@@ -63,6 +56,10 @@ minikube stop
 ```
 # Troubleshooting
 find the error you got and see the steps
+- `The "docker" driver should not be used with root privileges.`
+
+Try running the command with `sudo` and make sure you added `--force`
+
 - `Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.28.3 requires crictl to be installed in root's path`
 
 follow these steps
