@@ -46,17 +46,38 @@ chmod a+x /bin/kubectl
 
 ```
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/bin/minikube
-sudo chmod +x /usr/bin/minikube
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+sudo chmod +x /usr/local/bin/minikube
 ```
 
 ### Minikube commands
+You start your cluster here, for any issues go to [Troubleshooting](#troubleshooting)
 ```
 minikube start --vm-driver=none
+```
+```
 minikube addons list
 minikube addons enable ingress
 minikube dashboard
 minikube stop
+```
+# Troubleshooting
+find the error you got and see the steps
+- `Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.28.3 requires crictl to be installed in root's path`
+
+follow these steps
+```
+wget https://github.com/kubernetes-sigs/cri-tools/releases/download/VERSION/crictl-VERSION-linux-amd64.tar.gz
+```
+```
+tar zxvf crictl-v1.28.0-linux-amd64.tar.gz
+```
+```
+sudo mv crictl /usr/local/bin
+```
+check if it is installed
+```
+sudo crictl --version
 ```
 ### Start Minikube with higher resources
 ```
