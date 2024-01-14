@@ -1,6 +1,7 @@
 # Minikube on DigitalOcean
 
-### Minimum system requirements
+### Preferred system requirements
+You can run the system with less than that but you may face problems
 ```
 2 GB RAM or more
 2 CPU / vCPU or more
@@ -59,6 +60,13 @@ find the error you got and see the steps
 - `The "docker" driver should not be used with root privileges.`
 
 Try running the command with `sudo` and make sure you added `--force`
+
+- `Requested cpu count 1 is less than the minimum allowed of 2`
+
+Try running the command like ths
+```console
+minikube start --driver=docker --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus 1
+```
 
 - `Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.28.3 requires crictl to be installed in root's path`
 
